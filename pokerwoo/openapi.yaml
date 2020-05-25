@@ -1,0 +1,2440 @@
+openapi: 3.0.2
+info:
+  title: ''
+  version: ''
+paths:
+  /poker/games/:
+    get:
+      operationId: listGames
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    id:
+                      type: integer
+                      readOnly: true
+                    game_number:
+                      type: integer
+                      maximum: 4294967295
+                      format: int64
+                      minimum: 0
+                    date_played:
+                      type: string
+                      format: date
+                    stake:
+                      type: integer
+                      maximum: 4294967295
+                      format: int64
+                      minimum: 0
+                    place_two_multiplier:
+                      type: number
+                      multipleOf: 1.0e-10
+                      maximum: 1000000000
+                      minimum: -1000000000
+                    place_three_multiplier:
+                      type: number
+                      multipleOf: 1.0e-10
+                      maximum: 1000000000
+                      minimum: -1000000000
+                  required:
+                  - date_played
+          description: ''
+    post:
+      operationId: createGame
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: &id001
+              properties:
+                game_number:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+                date_played:
+                  type: string
+                  format: date
+                stake:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+                place_two_multiplier:
+                  type: number
+                  multipleOf: 1.0e-10
+                  maximum: 1000000000
+                  minimum: -1000000000
+                place_three_multiplier:
+                  type: number
+                  multipleOf: 1.0e-10
+                  maximum: 1000000000
+                  minimum: -1000000000
+              required:
+              - date_played
+          application/x-www-form-urlencoded:
+            schema: *id001
+          multipart/form-data:
+            schema: *id001
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  game_number:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  date_played:
+                    type: string
+                    format: date
+                  stake:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  place_two_multiplier:
+                    type: number
+                    multipleOf: 1.0e-10
+                    maximum: 1000000000
+                    minimum: -1000000000
+                  place_three_multiplier:
+                    type: number
+                    multipleOf: 1.0e-10
+                    maximum: 1000000000
+                    minimum: -1000000000
+                required:
+                - date_played
+          description: ''
+  /poker/games/{id}/:
+    get:
+      operationId: retrieveGame
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this game.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  game_number:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  date_played:
+                    type: string
+                    format: date
+                  stake:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  place_two_multiplier:
+                    type: number
+                    multipleOf: 1.0e-10
+                    maximum: 1000000000
+                    minimum: -1000000000
+                  place_three_multiplier:
+                    type: number
+                    multipleOf: 1.0e-10
+                    maximum: 1000000000
+                    minimum: -1000000000
+                required:
+                - date_played
+          description: ''
+    put:
+      operationId: updateGame
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this game.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id002
+              properties:
+                game_number:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+                date_played:
+                  type: string
+                  format: date
+                stake:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+                place_two_multiplier:
+                  type: number
+                  multipleOf: 1.0e-10
+                  maximum: 1000000000
+                  minimum: -1000000000
+                place_three_multiplier:
+                  type: number
+                  multipleOf: 1.0e-10
+                  maximum: 1000000000
+                  minimum: -1000000000
+              required:
+              - date_played
+          application/x-www-form-urlencoded:
+            schema: *id002
+          multipart/form-data:
+            schema: *id002
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  game_number:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  date_played:
+                    type: string
+                    format: date
+                  stake:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  place_two_multiplier:
+                    type: number
+                    multipleOf: 1.0e-10
+                    maximum: 1000000000
+                    minimum: -1000000000
+                  place_three_multiplier:
+                    type: number
+                    multipleOf: 1.0e-10
+                    maximum: 1000000000
+                    minimum: -1000000000
+                required:
+                - date_played
+          description: ''
+    patch:
+      operationId: partial_updateGame
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this game.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id003
+              properties:
+                game_number:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+                date_played:
+                  type: string
+                  format: date
+                stake:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+                place_two_multiplier:
+                  type: number
+                  multipleOf: 1.0e-10
+                  maximum: 1000000000
+                  minimum: -1000000000
+                place_three_multiplier:
+                  type: number
+                  multipleOf: 1.0e-10
+                  maximum: 1000000000
+                  minimum: -1000000000
+          application/x-www-form-urlencoded:
+            schema: *id003
+          multipart/form-data:
+            schema: *id003
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  game_number:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  date_played:
+                    type: string
+                    format: date
+                  stake:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  place_two_multiplier:
+                    type: number
+                    multipleOf: 1.0e-10
+                    maximum: 1000000000
+                    minimum: -1000000000
+                  place_three_multiplier:
+                    type: number
+                    multipleOf: 1.0e-10
+                    maximum: 1000000000
+                    minimum: -1000000000
+                required:
+                - date_played
+          description: ''
+    delete:
+      operationId: destroyGame
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this game.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+  /poker/games/{game_pk}/participants/:
+    get:
+      operationId: listGameParticipants
+      description: ''
+      parameters:
+      - name: game_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    id:
+                      type: integer
+                      readOnly: true
+                    player_ref:
+                      type: integer
+                      maximum: 4294967295
+                      format: int64
+                      minimum: 0
+                    game:
+                      type: integer
+                    place:
+                      type: integer
+                      maximum: 4294967295
+                      format: int64
+                      minimum: 0
+                  required:
+                  - game
+          description: ''
+    post:
+      operationId: createGameParticipant
+      description: ''
+      parameters:
+      - name: game_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id004
+              properties:
+                player_ref:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+                game:
+                  type: integer
+                place:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+              required:
+              - game
+          application/x-www-form-urlencoded:
+            schema: *id004
+          multipart/form-data:
+            schema: *id004
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  player_ref:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  game:
+                    type: integer
+                  place:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                required:
+                - game
+          description: ''
+  /poker/games/{game_pk}/participants/{id}/:
+    get:
+      operationId: retrieveGameParticipant
+      description: ''
+      parameters:
+      - name: game_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  player_ref:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  game:
+                    type: integer
+                  place:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                required:
+                - game
+          description: ''
+    put:
+      operationId: updateGameParticipant
+      description: ''
+      parameters:
+      - name: game_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id005
+              properties:
+                player_ref:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+                game:
+                  type: integer
+                place:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+              required:
+              - game
+          application/x-www-form-urlencoded:
+            schema: *id005
+          multipart/form-data:
+            schema: *id005
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  player_ref:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  game:
+                    type: integer
+                  place:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                required:
+                - game
+          description: ''
+    patch:
+      operationId: partial_updateGameParticipant
+      description: ''
+      parameters:
+      - name: game_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id006
+              properties:
+                player_ref:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+                game:
+                  type: integer
+                place:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+          application/x-www-form-urlencoded:
+            schema: *id006
+          multipart/form-data:
+            schema: *id006
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  player_ref:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  game:
+                    type: integer
+                  place:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                required:
+                - game
+          description: ''
+    delete:
+      operationId: destroyGameParticipant
+      description: ''
+      parameters:
+      - name: game_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+  /poker/games/{game_pk}/tables/:
+    get:
+      operationId: listTables
+      description: ''
+      parameters:
+      - name: game_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    id:
+                      type: integer
+                      readOnly: true
+                    level:
+                      type: integer
+                      maximum: 4294967295
+                      format: int64
+                      minimum: 0
+                    designation:
+                      type: string
+                      maxLength: 10
+                    starting_chips:
+                      type: integer
+                      maximum: 4294967295
+                      format: int64
+                      minimum: 0
+                  required:
+                  - designation
+          description: ''
+    post:
+      operationId: createTable
+      description: ''
+      parameters:
+      - name: game_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id007
+              properties:
+                level:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+                designation:
+                  type: string
+                  maxLength: 10
+                starting_chips:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+              required:
+              - designation
+          application/x-www-form-urlencoded:
+            schema: *id007
+          multipart/form-data:
+            schema: *id007
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  level:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  designation:
+                    type: string
+                    maxLength: 10
+                  starting_chips:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                required:
+                - designation
+          description: ''
+  /poker/games/{game_pk}/tables/{id}/:
+    get:
+      operationId: retrieveTable
+      description: ''
+      parameters:
+      - name: game_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  level:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  designation:
+                    type: string
+                    maxLength: 10
+                  starting_chips:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                required:
+                - designation
+          description: ''
+    put:
+      operationId: updateTable
+      description: ''
+      parameters:
+      - name: game_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id008
+              properties:
+                level:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+                designation:
+                  type: string
+                  maxLength: 10
+                starting_chips:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+              required:
+              - designation
+          application/x-www-form-urlencoded:
+            schema: *id008
+          multipart/form-data:
+            schema: *id008
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  level:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  designation:
+                    type: string
+                    maxLength: 10
+                  starting_chips:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                required:
+                - designation
+          description: ''
+    patch:
+      operationId: partial_updateTable
+      description: ''
+      parameters:
+      - name: game_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id009
+              properties:
+                level:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+                designation:
+                  type: string
+                  maxLength: 10
+                starting_chips:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+          application/x-www-form-urlencoded:
+            schema: *id009
+          multipart/form-data:
+            schema: *id009
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  level:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  designation:
+                    type: string
+                    maxLength: 10
+                  starting_chips:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                required:
+                - designation
+          description: ''
+    delete:
+      operationId: destroyTable
+      description: ''
+      parameters:
+      - name: game_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+  /poker/games/{game_pk}/tables/{table_pk}/participants/:
+    get:
+      operationId: listTableParticipants
+      description: ''
+      parameters:
+      - name: game_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: table_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    id:
+                      type: integer
+                      readOnly: true
+                    game_participant:
+                      type: integer
+                    table:
+                      type: integer
+                    success:
+                      type: boolean
+                  required:
+                  - game_participant
+                  - table
+          description: ''
+    post:
+      operationId: createTableParticipant
+      description: ''
+      parameters:
+      - name: game_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: table_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id010
+              properties:
+                game_participant:
+                  type: integer
+                table:
+                  type: integer
+                success:
+                  type: boolean
+              required:
+              - game_participant
+              - table
+          application/x-www-form-urlencoded:
+            schema: *id010
+          multipart/form-data:
+            schema: *id010
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  game_participant:
+                    type: integer
+                  table:
+                    type: integer
+                  success:
+                    type: boolean
+                required:
+                - game_participant
+                - table
+          description: ''
+  /poker/games/{game_pk}/tables/{table_pk}/participants/{id}/:
+    get:
+      operationId: retrieveTableParticipant
+      description: ''
+      parameters:
+      - name: game_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: table_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  game_participant:
+                    type: integer
+                  table:
+                    type: integer
+                  success:
+                    type: boolean
+                required:
+                - game_participant
+                - table
+          description: ''
+    put:
+      operationId: updateTableParticipant
+      description: ''
+      parameters:
+      - name: game_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: table_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id011
+              properties:
+                game_participant:
+                  type: integer
+                table:
+                  type: integer
+                success:
+                  type: boolean
+              required:
+              - game_participant
+              - table
+          application/x-www-form-urlencoded:
+            schema: *id011
+          multipart/form-data:
+            schema: *id011
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  game_participant:
+                    type: integer
+                  table:
+                    type: integer
+                  success:
+                    type: boolean
+                required:
+                - game_participant
+                - table
+          description: ''
+    patch:
+      operationId: partial_updateTableParticipant
+      description: ''
+      parameters:
+      - name: game_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: table_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id012
+              properties:
+                game_participant:
+                  type: integer
+                table:
+                  type: integer
+                success:
+                  type: boolean
+          application/x-www-form-urlencoded:
+            schema: *id012
+          multipart/form-data:
+            schema: *id012
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  game_participant:
+                    type: integer
+                  table:
+                    type: integer
+                  success:
+                    type: boolean
+                required:
+                - game_participant
+                - table
+          description: ''
+    delete:
+      operationId: destroyTableParticipant
+      description: ''
+      parameters:
+      - name: game_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: table_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+  /poker/games/{game_pk}/tables/{table_pk}/rounds/:
+    get:
+      operationId: listRounds
+      description: ''
+      parameters:
+      - name: game_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: table_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    id:
+                      type: integer
+                      readOnly: true
+                    table:
+                      type: integer
+                    round_number:
+                      type: integer
+                      maximum: 4294967295
+                      format: int64
+                      minimum: 0
+                    big_blind:
+                      type: integer
+                      nullable: true
+                    small_blind:
+                      type: integer
+                      nullable: true
+                    blind_amount:
+                      type: integer
+                      maximum: 4294967295
+                      format: int64
+                      minimum: 0
+                    flop1:
+                      type: integer
+                      maximum: 4294967295
+                      format: int64
+                      minimum: 0
+                    flop2:
+                      type: integer
+                      maximum: 4294967295
+                      format: int64
+                      minimum: 0
+                    flop3:
+                      type: integer
+                      maximum: 4294967295
+                      format: int64
+                      minimum: 0
+                    turn:
+                      type: integer
+                      maximum: 4294967295
+                      format: int64
+                      minimum: 0
+                    river:
+                      type: integer
+                      maximum: 4294967295
+                      format: int64
+                      minimum: 0
+                  required:
+                  - table
+          description: ''
+    post:
+      operationId: createRound
+      description: ''
+      parameters:
+      - name: game_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: table_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id013
+              properties:
+                table:
+                  type: integer
+                round_number:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+                big_blind:
+                  type: integer
+                  nullable: true
+                small_blind:
+                  type: integer
+                  nullable: true
+                blind_amount:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+                flop1:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+                flop2:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+                flop3:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+                turn:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+                river:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+              required:
+              - table
+          application/x-www-form-urlencoded:
+            schema: *id013
+          multipart/form-data:
+            schema: *id013
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  table:
+                    type: integer
+                  round_number:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  big_blind:
+                    type: integer
+                    nullable: true
+                  small_blind:
+                    type: integer
+                    nullable: true
+                  blind_amount:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  flop1:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  flop2:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  flop3:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  turn:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  river:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                required:
+                - table
+          description: ''
+  /poker/games/{game_pk}/tables/{table_pk}/rounds/{id}/:
+    get:
+      operationId: retrieveRound
+      description: ''
+      parameters:
+      - name: game_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: table_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  table:
+                    type: integer
+                  round_number:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  big_blind:
+                    type: integer
+                    nullable: true
+                  small_blind:
+                    type: integer
+                    nullable: true
+                  blind_amount:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  flop1:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  flop2:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  flop3:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  turn:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  river:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                required:
+                - table
+          description: ''
+    put:
+      operationId: updateRound
+      description: ''
+      parameters:
+      - name: game_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: table_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id014
+              properties:
+                table:
+                  type: integer
+                round_number:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+                big_blind:
+                  type: integer
+                  nullable: true
+                small_blind:
+                  type: integer
+                  nullable: true
+                blind_amount:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+                flop1:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+                flop2:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+                flop3:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+                turn:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+                river:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+              required:
+              - table
+          application/x-www-form-urlencoded:
+            schema: *id014
+          multipart/form-data:
+            schema: *id014
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  table:
+                    type: integer
+                  round_number:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  big_blind:
+                    type: integer
+                    nullable: true
+                  small_blind:
+                    type: integer
+                    nullable: true
+                  blind_amount:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  flop1:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  flop2:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  flop3:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  turn:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  river:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                required:
+                - table
+          description: ''
+    patch:
+      operationId: partial_updateRound
+      description: ''
+      parameters:
+      - name: game_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: table_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id015
+              properties:
+                table:
+                  type: integer
+                round_number:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+                big_blind:
+                  type: integer
+                  nullable: true
+                small_blind:
+                  type: integer
+                  nullable: true
+                blind_amount:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+                flop1:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+                flop2:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+                flop3:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+                turn:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+                river:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+          application/x-www-form-urlencoded:
+            schema: *id015
+          multipart/form-data:
+            schema: *id015
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  table:
+                    type: integer
+                  round_number:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  big_blind:
+                    type: integer
+                    nullable: true
+                  small_blind:
+                    type: integer
+                    nullable: true
+                  blind_amount:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  flop1:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  flop2:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  flop3:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  turn:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  river:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                required:
+                - table
+          description: ''
+    delete:
+      operationId: destroyRound
+      description: ''
+      parameters:
+      - name: game_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: table_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+  /poker/games/{game_pk}/tables/{table_pk}/rounds/{round_pk}/hands/:
+    get:
+      operationId: listHands
+      description: ''
+      parameters:
+      - name: game_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: table_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: round_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    id:
+                      type: integer
+                      readOnly: true
+                    table_participant:
+                      type: integer
+                    round:
+                      type: integer
+                    card1:
+                      type: integer
+                      maximum: 4294967295
+                      format: int64
+                      minimum: 0
+                    card2:
+                      type: integer
+                      maximum: 4294967295
+                      format: int64
+                      minimum: 0
+                  required:
+                  - table_participant
+                  - round
+          description: ''
+    post:
+      operationId: createHand
+      description: ''
+      parameters:
+      - name: game_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: table_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: round_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id016
+              properties:
+                table_participant:
+                  type: integer
+                round:
+                  type: integer
+                card1:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+                card2:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+              required:
+              - table_participant
+              - round
+          application/x-www-form-urlencoded:
+            schema: *id016
+          multipart/form-data:
+            schema: *id016
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  table_participant:
+                    type: integer
+                  round:
+                    type: integer
+                  card1:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  card2:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                required:
+                - table_participant
+                - round
+          description: ''
+  /poker/games/{game_pk}/tables/{table_pk}/rounds/{round_pk}/hands/{id}/:
+    get:
+      operationId: retrieveHand
+      description: ''
+      parameters:
+      - name: game_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: table_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: round_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  table_participant:
+                    type: integer
+                  round:
+                    type: integer
+                  card1:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  card2:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                required:
+                - table_participant
+                - round
+          description: ''
+    put:
+      operationId: updateHand
+      description: ''
+      parameters:
+      - name: game_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: table_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: round_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id017
+              properties:
+                table_participant:
+                  type: integer
+                round:
+                  type: integer
+                card1:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+                card2:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+              required:
+              - table_participant
+              - round
+          application/x-www-form-urlencoded:
+            schema: *id017
+          multipart/form-data:
+            schema: *id017
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  table_participant:
+                    type: integer
+                  round:
+                    type: integer
+                  card1:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  card2:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                required:
+                - table_participant
+                - round
+          description: ''
+    patch:
+      operationId: partial_updateHand
+      description: ''
+      parameters:
+      - name: game_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: table_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: round_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id018
+              properties:
+                table_participant:
+                  type: integer
+                round:
+                  type: integer
+                card1:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+                card2:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+          application/x-www-form-urlencoded:
+            schema: *id018
+          multipart/form-data:
+            schema: *id018
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  table_participant:
+                    type: integer
+                  round:
+                    type: integer
+                  card1:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                  card2:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                required:
+                - table_participant
+                - round
+          description: ''
+    delete:
+      operationId: destroyHand
+      description: ''
+      parameters:
+      - name: game_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: table_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: round_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+  /poker/games/{game_pk}/tables/{table_pk}/rounds/{round_pk}/winners/:
+    get:
+      operationId: listRoundWinners
+      description: ''
+      parameters:
+      - name: game_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: table_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: round_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    id:
+                      type: integer
+                      readOnly: true
+                    table_participant:
+                      type: integer
+                    round:
+                      type: integer
+                    chips_won:
+                      type: integer
+                      maximum: 4294967295
+                      format: int64
+                      minimum: 0
+                  required:
+                  - table_participant
+                  - round
+          description: ''
+    post:
+      operationId: createRoundWinner
+      description: ''
+      parameters:
+      - name: game_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: table_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: round_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id019
+              properties:
+                table_participant:
+                  type: integer
+                round:
+                  type: integer
+                chips_won:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+              required:
+              - table_participant
+              - round
+          application/x-www-form-urlencoded:
+            schema: *id019
+          multipart/form-data:
+            schema: *id019
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  table_participant:
+                    type: integer
+                  round:
+                    type: integer
+                  chips_won:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                required:
+                - table_participant
+                - round
+          description: ''
+  /poker/games/{game_pk}/tables/{table_pk}/rounds/{round_pk}/winners/{id}/:
+    get:
+      operationId: retrieveRoundWinner
+      description: ''
+      parameters:
+      - name: game_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: table_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: round_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  table_participant:
+                    type: integer
+                  round:
+                    type: integer
+                  chips_won:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                required:
+                - table_participant
+                - round
+          description: ''
+    put:
+      operationId: updateRoundWinner
+      description: ''
+      parameters:
+      - name: game_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: table_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: round_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id020
+              properties:
+                table_participant:
+                  type: integer
+                round:
+                  type: integer
+                chips_won:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+              required:
+              - table_participant
+              - round
+          application/x-www-form-urlencoded:
+            schema: *id020
+          multipart/form-data:
+            schema: *id020
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  table_participant:
+                    type: integer
+                  round:
+                    type: integer
+                  chips_won:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                required:
+                - table_participant
+                - round
+          description: ''
+    patch:
+      operationId: partial_updateRoundWinner
+      description: ''
+      parameters:
+      - name: game_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: table_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: round_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id021
+              properties:
+                table_participant:
+                  type: integer
+                round:
+                  type: integer
+                chips_won:
+                  type: integer
+                  maximum: 4294967295
+                  format: int64
+                  minimum: 0
+          application/x-www-form-urlencoded:
+            schema: *id021
+          multipart/form-data:
+            schema: *id021
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  table_participant:
+                    type: integer
+                  round:
+                    type: integer
+                  chips_won:
+                    type: integer
+                    maximum: 4294967295
+                    format: int64
+                    minimum: 0
+                required:
+                - table_participant
+                - round
+          description: ''
+    delete:
+      operationId: destroyRoundWinner
+      description: ''
+      parameters:
+      - name: game_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: table_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: round_pk
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
