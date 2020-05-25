@@ -6,7 +6,7 @@ router = DefaultRouter()
 router.register(r'games', GameViewSet)
 
 game_router = NestedDefaultRouter(router, r'games', lookup='game')
-game_router.register(r'participants', GameParticipantViewSet, basename='participants')
+game_router.register(r'participants', GameParticipantViewSet, basename='gameparticipant')
 game_router.register(r'tables', TableViewSet, basename='tables')
 
 table_router = NestedDefaultRouter(game_router, r'tables', lookup='table')
