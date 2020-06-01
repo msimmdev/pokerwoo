@@ -1,13 +1,11 @@
-from rest_framework.serializers import HyperlinkedModelSerializer
+from rest_framework.serializers import ModelSerializer
 from poker.models import Game, GameParticipant, Table, TableParticipant, Round, Hand, RoundWinner
-from rest_framework_nested.serializers import NestedHyperlinkedModelSerializer
 
-class GameSerializer(HyperlinkedModelSerializer):
+class GameSerializer(ModelSerializer):
     class Meta:
         model = Game
         fields = [
             'id',
-            'url',
             'game_number',
             'date_played',
             'stake',
@@ -15,32 +13,28 @@ class GameSerializer(HyperlinkedModelSerializer):
             'place_three_multiplier',
         ]
 
-class GameParticipantSerializer(NestedHyperlinkedModelSerializer):
+class GameParticipantSerializer(ModelSerializer):
     parent_lookup_kwargs = {
         'game_pk' : 'game__pk',
     }
     class Meta:
         model = GameParticipant
-        fields = ['id', 'url', 'player_ref', 'game', 'place']
+        fields = ['id', 'player_ref', 'game', 'place']
 
-class TableSerializer(NestedHyperlinkedModelSerializer):
+class TableSerializer(ModelSerializer):
     parent_lookup_kwargs = {
         'game_pk' : 'game__pk',
     }
     class Meta:
         model = Table
-        fields = ['id', 'url', 'level', 'designation', 'starting_chips']
+        fields = ['id', 'level', 'designation', 'game', 'starting_chips']
 
-class TableParticipantSerializer(NestedHyperlinkedModelSerializer):
-    parent_lookup_kwargs = {
-        'game_pk' : 'game__pk',
-        'table_pk' : 'table__pk',
-    }
+class TableParticipantSerializer(ModelSerializer):
     class Meta:
         model = TableParticipant
-        fields = ['id', 'url', 'game_participant', 'table', 'success']
+        fields = ['id', 'game_participant', 'table', 'game', 'success']
 
-class RoundSerializer(NestedHyperlinkedModelSerializer):
+class RoundSerializer(ModelSerializer):
     parent_lookup_kwargs = {
         'game_pk' : 'game__pk',
         'table_pk' : 'table__pk',
@@ -49,8 +43,8 @@ class RoundSerializer(NestedHyperlinkedModelSerializer):
         model = Round
         fields = [
             'id',
-            'url',
             'table',
+            'game',
             'round_number',
             'big_blind',
             'small_blind',
@@ -62,7 +56,7 @@ class RoundSerializer(NestedHyperlinkedModelSerializer):
             'river',
         ]
 
-class HandSerializer(NestedHyperlinkedModelSerializer):
+class HandSerializer(ModelSerializer):
     parent_lookup_kwargs = {
         'game_pk' : 'game__pk',
         'table_pk' : 'table__pk',
@@ -70,9 +64,9 @@ class HandSerializer(NestedHyperlinkedModelSerializer):
     }
     class Meta:
         model = Hand
-        fields = ['id', 'url', 'table_participant', 'round', 'card1', 'card2']
+        fields = ['id', 'table_participant', 'round', 'table', 'game', 'card1', 'card2']
 
-class RoundWinnerSerializer(NestedHyperlinkedModelSerializer):
+class RoundWinnerSerializer(ModelSerializer):
     parent_lookup_kwargs = {
         'game_pk' : 'game__pk',
         'table_pk' : 'table__pk',
@@ -80,4 +74,4 @@ class RoundWinnerSerializer(NestedHyperlinkedModelSerializer):
     }
     class Meta:
         model = RoundWinner
-        fields = ['id', 'url', 'table_participant', 'round', 'chips_won']
+        fields = ['id', 'table_participant', 'round', 'table', 'game', 'chips_won']

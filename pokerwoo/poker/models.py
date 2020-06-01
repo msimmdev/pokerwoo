@@ -22,11 +22,13 @@ class Table(models.Model):
 
 class TableParticipant(models.Model):
     game_participant = models.ForeignKey(GameParticipant, on_delete=models.CASCADE)
+    game = models.ForeignKey(Game, on_delete=models.CASCADE)
     table = models.ForeignKey(Table, on_delete=models.CASCADE)
     success = models.BooleanField(default=False)
 
 class Round(models.Model):
     table = models.ForeignKey(Table, on_delete=models.CASCADE)
+    game = models.ForeignKey(Game, on_delete=models.CASCADE)
     round_number = models.PositiveIntegerField(default=1)
     big_blind = models.ForeignKey(TableParticipant, null=True, on_delete=models.SET_NULL, related_name='+')
     small_blind = models.ForeignKey(TableParticipant, null=True, on_delete=models.SET_NULL, related_name='+')
@@ -39,11 +41,15 @@ class Round(models.Model):
 
 class Hand(models.Model):
     table_participant = models.ForeignKey(TableParticipant, on_delete=models.CASCADE)
+    table = models.ForeignKey(Table, on_delete=models.CASCADE)
+    game = models.ForeignKey(Game, on_delete=models.CASCADE)
     round = models.ForeignKey(Round, on_delete=models.CASCADE)
     card1 = models.PositiveIntegerField(default=0)
     card2 = models.PositiveIntegerField(default=0)
 
 class RoundWinner(models.Model):
     table_participant = models.ForeignKey(TableParticipant, on_delete=models.CASCADE)
+    table = models.ForeignKey(Table, on_delete=models.CASCADE)
+    game = models.ForeignKey(Game, on_delete=models.CASCADE)
     round = models.ForeignKey(Round, on_delete=models.CASCADE)
     chips_won = models.PositiveIntegerField(default=0)

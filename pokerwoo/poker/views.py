@@ -26,25 +26,25 @@ class TableParticipantViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
-        return TableParticipant.objects.filter(game=self.kwargs['table_pk'])
+        return TableParticipant.objects.filter(table=self.kwargs['table_pk'])
 
 class RoundViewSet(viewsets.ModelViewSet):
     serializer_class = RoundSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
-        return Round.objects.filter(game=self.kwargs['table_pk'])
+        return Round.objects.filter(table=self.kwargs['table_pk'])
 
 class HandViewSet(viewsets.ModelViewSet):
     serializer_class = HandSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
-        return Hand.objects.filter(game=self.kwargs['round_pk'])
+        return Hand.objects.filter(round=self.kwargs['round_pk'])
 
 class RoundWinnerViewSet(viewsets.ModelViewSet):
     serializer_class = RoundWinnerSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
-        return RoundWinner.objects.filter(game=self.kwargs['round_pk'])
+        return RoundWinner.objects.filter(round=self.kwargs['round_pk'])
