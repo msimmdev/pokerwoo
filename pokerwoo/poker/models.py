@@ -8,23 +8,25 @@ class Game(models.Model):
     stake = models.PositiveIntegerField(default=0)
     place_two_multiplier = models.DecimalField(default=0, max_digits=19, decimal_places=10)
     place_three_multiplier = models.DecimalField(default=0, max_digits=19, decimal_places=10)
+    complete = models.BooleanField(default=False, blank=True)
 
 class GameParticipant(models.Model):
     player_ref = models.PositiveIntegerField(default=0)
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
-    place = models.PositiveIntegerField(default=0)
+    place = models.PositiveIntegerField(default=0, blank=True)
 
 class Table(models.Model):
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
-    level = models.PositiveIntegerField(default=0)
+    level = models.PositiveIntegerField(default=0, blank=True)
     designation = models.CharField(max_length = 10)
-    starting_chips = models.PositiveIntegerField(default=0)
+    starting_chips = models.PositiveIntegerField(default=0, null=True, blank=True)
+    progressing = models.PositiveIntegerField(default=0, blank=True)
 
 class TableParticipant(models.Model):
     game_participant = models.ForeignKey(GameParticipant, on_delete=models.CASCADE)
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
     table = models.ForeignKey(Table, on_delete=models.CASCADE)
-    success = models.BooleanField(default=False)
+    success = models.BooleanField(default=False, blank=True)
 
 class Round(models.Model):
     table = models.ForeignKey(Table, on_delete=models.CASCADE)
