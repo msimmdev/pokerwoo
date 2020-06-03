@@ -1,7 +1,15 @@
 from rest_framework.serializers import ModelSerializer, PrimaryKeyRelatedField
 from poker.models import Game, GameParticipant, Table, TableParticipant, Round, Hand, RoundWinner
 
+class GameParticipantSerializer(ModelSerializer):
+    game = PrimaryKeyRelatedField(read_only=True)
+    class Meta:
+        model = GameParticipant
+        fields = ['id', 'player_ref', 'game', 'place']
+
 class GameSerializer(ModelSerializer):
+    participants = GameParticipantSerializer(read_only=True, many=True)
+    tables = PrimaryKeyRelatedField(read_only=True, many=True)
     class Meta:
         model = Game
         fields = [
@@ -11,19 +19,10 @@ class GameSerializer(ModelSerializer):
             'stake',
             'place_two_multiplier',
             'place_three_multiplier',
+            'complete',
+            'participants',
+            'tables',
         ]
-
-class GameParticipantSerializer(ModelSerializer):
-    game = PrimaryKeyRelatedField(read_only=True)
-    class Meta:
-        model = GameParticipant
-        fields = ['id', 'player_ref', 'game', 'place']
-
-class TableSerializer(ModelSerializer):
-    game = PrimaryKeyRelatedField(read_only=True)
-    class Meta:
-        model = Table
-        fields = ['id', 'level', 'designation', 'game', 'progressing', 'starting_chips']
 
 class TableParticipantSerializer(ModelSerializer):
     table = PrimaryKeyRelatedField(read_only=True)
@@ -31,6 +30,13 @@ class TableParticipantSerializer(ModelSerializer):
     class Meta:
         model = TableParticipant
         fields = ['id', 'game_participant', 'table', 'game', 'success']
+
+class TableSerializer(ModelSerializer):
+    participants = TableParticipantSerializer(read_only=True, many=True)
+    game = PrimaryKeyRelatedField(read_only=True)
+    class Meta:
+        model = Table
+        fields = ['id', 'level', 'designation', 'game', 'progressing', 'starting_chips', 'participants']
 
 class RoundSerializer(ModelSerializer):
     table = PrimaryKeyRelatedField(read_only=True)

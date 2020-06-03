@@ -12,11 +12,11 @@ class Game(models.Model):
 
 class GameParticipant(models.Model):
     player_ref = models.PositiveIntegerField(default=0)
-    game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    game = models.ForeignKey(Game, on_delete=models.CASCADE, related_name='participants')
     place = models.PositiveIntegerField(default=0, blank=True)
 
 class Table(models.Model):
-    game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    game = models.ForeignKey(Game, on_delete=models.CASCADE, related_name='tables')
     level = models.PositiveIntegerField(default=0, blank=True)
     designation = models.CharField(max_length = 10)
     starting_chips = models.PositiveIntegerField(default=0, null=True, blank=True)
@@ -25,7 +25,7 @@ class Table(models.Model):
 class TableParticipant(models.Model):
     game_participant = models.ForeignKey(GameParticipant, on_delete=models.CASCADE)
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
-    table = models.ForeignKey(Table, on_delete=models.CASCADE)
+    table = models.ForeignKey(Table, on_delete=models.CASCADE, related_name='participants')
     success = models.BooleanField(default=False, blank=True)
 
 class Round(models.Model):
