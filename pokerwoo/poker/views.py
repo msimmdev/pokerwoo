@@ -32,7 +32,7 @@ class TableParticipantViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
-        return TableParticipant.objects.filter(table=self.kwargs['table_pk'], game=self.kwargs['table_pk'])
+        return TableParticipant.objects.filter(table=self.kwargs['table_pk'], game=self.kwargs['game_pk'])
 
     def perform_create(self, serializer):
         serializer.save(
