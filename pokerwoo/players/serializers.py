@@ -1,8 +1,8 @@
-from rest_framework.serializers import HyperlinkedModelSerializer
+from rest_framework.serializers import ModelSerializer
 from django.contrib.auth.models import User
 from players.models import Player, PaymentObligation
 
-class PlayerSerializer(HyperlinkedModelSerializer):
+class PlayerSerializer(ModelSerializer):
     class Meta:
         model = Player
         fields = [
@@ -18,7 +18,7 @@ class PlayerSerializer(HyperlinkedModelSerializer):
             'active',
         ]
 
-class PaymentObligationSerializer(HyperlinkedModelSerializer):
+class PaymentObligationSerializer(ModelSerializer):
     class Meta:
         model = PaymentObligation
         fields = [
@@ -27,9 +27,11 @@ class PaymentObligationSerializer(HyperlinkedModelSerializer):
             'payee',
             'game_ref',
             'payment_amount',
+            'payment_sent',
+            'payment_confirmed',
         ]
 
-class UserSerializer(HyperlinkedModelSerializer):
+class UserSerializer(ModelSerializer):
     class Meta:
         model = User
         fields = ['url', 'username', 'email']

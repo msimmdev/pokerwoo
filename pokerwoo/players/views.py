@@ -12,6 +12,7 @@ class PaymentObligationViewSet(viewsets.ModelViewSet):
     queryset = PaymentObligation.objects.all()
     serializer_class = PaymentObligationSerializer
     permission_classes = [permissions.IsAuthenticated]
+    filterset_fields = ['payer', 'payee']
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.filter(groups__name='Poker Players')
