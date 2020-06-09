@@ -22,4 +22,5 @@ urlpatterns = [
     path('players/', include('players.urls')),
     path('auth/', include('rest_framework.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('schedule/', include('schedule.urls')),
 ]

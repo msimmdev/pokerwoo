@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django_filters',
     'players',
     'poker',
+    'schedule',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
