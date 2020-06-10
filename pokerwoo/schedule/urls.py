@@ -11,4 +11,5 @@ player_router.register(r'players', views.SessionPlayerViewSet, basename='session
 urlpatterns = [
     path('', include(router.urls)),
     path('', include(player_router.urls)),
+    path('next/', views.NextSession.as_view()),
 ]

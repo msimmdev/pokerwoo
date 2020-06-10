@@ -5,7 +5,7 @@ from django.db import models
 class Session(models.Model):
     schedule_date = models.DateTimeField()
     createdby_player = models.PositiveIntegerField(default=0)
-    description = models.TextField()
+    description = models.TextField(null=True, blank=True)
 
 class SessionPlayer(models.Model):
     player_ref = models.PositiveIntegerField(default=0)
