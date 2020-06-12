@@ -1,5 +1,5 @@
 from django.urls import path, include
-from poker.views import GameViewSet, GameParticipantViewSet, TableViewSet, TableParticipantViewSet, RoundViewSet, HandViewSet, RoundWinnerViewSet
+from poker.views import GameViewSet, GameParticipantViewSet, TableViewSet, TableParticipantViewSet, RoundViewSet, HandViewSet, RoundWinnerViewSet, PlayerGames
 from rest_framework_nested.routers import SimpleRouter, NestedSimpleRouter
 
 router = SimpleRouter()
@@ -22,4 +22,5 @@ urlpatterns = [
     path('', include(game_router.urls)),
     path('', include(table_router.urls)),
     path('', include(round_router.urls)),
+    path('player_games/', PlayerGames.as_view()),
 ]

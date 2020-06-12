@@ -1,11 +1,23 @@
-from rest_framework import viewsets, permissions
+from rest_framework import viewsets, permissions, views, response, status
 from poker.models import Game, GameParticipant, Table, TableParticipant, Round, Hand, RoundWinner
 from poker.serializers import GameSerializer, GameParticipantSerializer, TableSerializer, TableParticipantSerializer, RoundSerializer, HandSerializer, RoundWinnerSerializer
+import sys
 
 class GameViewSet(viewsets.ModelViewSet):
     queryset = Game.objects.all()
     serializer_class = GameSerializer
     permission_classes = [permissions.IsAuthenticated]
+    filterset_fields = ['date_played']
+
+class PlayerGames(views.APIView):
+    def get(self, request):
+        games = []
+        if 'player_ref' in request.query_params:
+            participants = GameParticipant.objects.filter(player_ref=request.query_params['player_ref'])
+            for participant in participants:
+                games.append(participant.game)
+        serializer = GameSerializer(games, many=True, context={'request': request})
+        return response.Response(serializer.data)
 
 class GameParticipantViewSet(viewsets.ModelViewSet):
     serializer_class = GameParticipantSerializer
