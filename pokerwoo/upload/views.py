@@ -6,7 +6,7 @@ from upload.models import AvatarUpload
 
 @require_POST
 @csrf_exempt
-def upload( request ):
+def avatarUpload(request):
     instance = AvatarUpload(file=request.FILES['avatarupload'])
     instance.save()
     file_item = request.FILES['avatarupload']
@@ -14,6 +14,6 @@ def upload( request ):
         "name": file_item.name,
         "size": file_item.size,
         "type": file_item.content_type,
-        "url": 'https://pokerwoo.s3.eu-west-2.amazonaws.com/avatars/' + file_item.name,
+        "url": 'https://pokerwoo.s3.eu-west-2.amazonaws.com/' + instance.file.name
     }
     return JsonResponse(data)
