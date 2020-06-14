@@ -20,5 +20,4 @@ class PaymentObligation(models.Model):
     payment_amount = models.PositiveIntegerField(default=0)
     payment_sent = models.BooleanField(default=False, blank=True)
     payment_confirmed = models.BooleanField(default=False, blank=True)
-
-
+    

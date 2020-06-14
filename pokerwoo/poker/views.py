@@ -48,7 +48,7 @@ class TableParticipantViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(
-            game=Game.objects.get(pk=self.kwargs['game_pk']), 
+            game=Game.objects.get(pk=self.kwargs['game_pk']),
             table=Table.objects.get(pk=self.kwargs['table_pk']),
         )
 
@@ -61,7 +61,7 @@ class RoundViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(
-            game=Game.objects.get(pk=self.kwargs['game_pk']), 
+            game=Game.objects.get(pk=self.kwargs['game_pk']),
             table=Table.objects.get(pk=self.kwargs['table_pk']),
         )
 

@@ -2,36 +2,33 @@
 
 {% block content %}
 
-  {% if form.errors %}
-    <p>Your username and password didn't match. Please try again.</p>
-  {% endif %}
+  <div class="wrapper">
+    <div id="formContent">
+      <div>
+        <img src="/static/pokerwoo.svg" id="icon" alt="Pokerwoo" />
+      </div>
+
+      {% if form.errors %}
+        <div class="formError">Login Failed.</div>
+      {% endif %}
   
-  {% if next %}
-    {% if user.is_authenticated %}
-      <p>Your account doesn't have access to this page. To proceed,
-      please login with an account that has access.</p>
-    {% else %}
-      <p>Please login to see this page.</p>
-    {% endif %}
-  {% endif %}
+      <!-- Login Form -->
+      <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <p>{{ form.username.label }}:</p>
+        {{ form.username }}
+        <p>{{ form.password.label }}:</p>
+        {{ form.password }}
+        <input type="submit" value="Log In">
+      </form>
   
-  <form method="post" action="{% url 'login' %}">
-    {% csrf_token %}
-    <table>
-      <tr>
-        <td>{{ form.username.label_tag }}</td>
-        <td>{{ form.username }}</td>
-      </tr>
-      <tr>
-        <td>{{ form.password.label_tag }}</td>
-        <td>{{ form.password }}</td>
-      </tr>
-    </table>
-    <input type="submit" value="login" />
-    <input type="hidden" name="next" value="{{ next }}" />
-  </form>
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <a class="underlineHover" href="{% url 'password_reset' %}">Forgot Password?</a><br />
+        Don't have an account? <a class="underlineHover" href="">Sign Up</a>
+      </div>
   
-  {# Assumes you setup the password_reset view in your URLconf #}
-  <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+    </div>
+  </div>
   
 {% endblock %}

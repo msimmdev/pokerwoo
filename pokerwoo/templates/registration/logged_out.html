@@ -1,6 +1,14 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <p>Logged out!</p>  
-  <a href="{% url 'login'%}">Click here to login again.</a>
+<div class="wrapper">
+  <div id="formContent">
+    <div>
+      <img src="/static/pokerwoo.svg" id="icon" alt="Pokerwoo" />
+    </div>
+
+    <p>Logged out!</p>  
+    <a href="{% url 'login'%}">Click here to login again.</a>
+  </div>
+</div>
 {% endblock %}
