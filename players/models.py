@@ -13,6 +13,9 @@ class Player(models.Model):
     bank_sort_code = models.CharField(max_length=6, blank=True, null=True)
     active = models.BooleanField(default=True, blank=True)
 
+    def __str__(self):
+        return self.name
+
 class PaymentObligation(models.Model):
     payer = models.ForeignKey(Player, on_delete=models.CASCADE, related_name='+')
     payee = models.ForeignKey(Player, on_delete=models.CASCADE, related_name='+')
