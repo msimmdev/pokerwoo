@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/static/static/css/main.96d065ea.chunk.css",
-    "main.js": "/static/static/js/main.f27abddd.chunk.js",
-    "main.js.map": "/static/static/js/main.f27abddd.chunk.js.map",
-    "runtime-main.js": "/static/static/js/runtime-main.3ce6c066.js",
-    "runtime-main.js.map": "/static/static/js/runtime-main.3ce6c066.js.map",
-    "static/js/2.6aa4f7f5.chunk.js": "/static/static/js/2.6aa4f7f5.chunk.js",
-    "static/js/2.6aa4f7f5.chunk.js.map": "/static/static/js/2.6aa4f7f5.chunk.js.map",
-    "index.html": "/static/index.html",
-    "precache-manifest.cfe99f885f130b2358f33a7376788b08.js": "/static/precache-manifest.cfe99f885f130b2358f33a7376788b08.js",
-    "service-worker.js": "/static/service-worker.js",
-    "static/css/main.96d065ea.chunk.css.map": "/static/static/css/main.96d065ea.chunk.css.map",
-    "static/js/2.6aa4f7f5.chunk.js.LICENSE.txt": "/static/static/js/2.6aa4f7f5.chunk.js.LICENSE.txt",
-    "static/media/pokerwoo-icon.b95e5959.svg": "/static/static/media/pokerwoo-icon.b95e5959.svg",
-    "static/media/pokerwoo.94759704.svg": "/static/static/media/pokerwoo.94759704.svg",
-    "static/media/saarland.ttf": "/static/static/media/saarland.a8521e38.ttf"
+    "main.css": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/css/main.485e0836.chunk.css",
+    "main.js": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/main.5e351c2f.chunk.js",
+    "main.js.map": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/main.5e351c2f.chunk.js.map",
+    "runtime-main.js": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/runtime-main.8dda7587.js",
+    "runtime-main.js.map": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/runtime-main.8dda7587.js.map",
+    "static/js/2.2b2417fa.chunk.js": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/2.2b2417fa.chunk.js",
+    "static/js/2.2b2417fa.chunk.js.map": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/2.2b2417fa.chunk.js.map",
+    "index.html": "https://pokerwoo.s3.eu-west-2.amazonaws.com/index.html",
+    "precache-manifest.6539db750c7c75609399a9ddcfccd501.js": "https://pokerwoo.s3.eu-west-2.amazonaws.com/precache-manifest.6539db750c7c75609399a9ddcfccd501.js",
+    "service-worker.js": "https://pokerwoo.s3.eu-west-2.amazonaws.com/service-worker.js",
+    "static/css/main.485e0836.chunk.css.map": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/css/main.485e0836.chunk.css.map",
+    "static/js/2.2b2417fa.chunk.js.LICENSE.txt": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/2.2b2417fa.chunk.js.LICENSE.txt",
+    "static/media/pokerwoo-icon.b95e5959.svg": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/media/pokerwoo-icon.b95e5959.svg",
+    "static/media/pokerwoo.94759704.svg": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/media/pokerwoo.94759704.svg",
+    "static/media/saarland.ttf": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/media/saarland.a8521e38.ttf"
   },
   "entrypoints": [
-    "static/js/runtime-main.3ce6c066.js",
-    "static/js/2.6aa4f7f5.chunk.js",
-    "static/css/main.96d065ea.chunk.css",
-    "static/js/main.f27abddd.chunk.js"
+    "static/js/runtime-main.8dda7587.js",
+    "static/js/2.2b2417fa.chunk.js",
+    "static/css/main.485e0836.chunk.css",
+    "static/js/main.5e351c2f.chunk.js"
   ]
 }
