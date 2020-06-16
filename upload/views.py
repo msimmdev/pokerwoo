@@ -14,6 +14,6 @@ def avatarUpload(request):
         "name": file_item.name,
         "size": file_item.size,
         "type": file_item.content_type,
-        "url": 'https://pokerwoo.s3.eu-west-2.amazonaws.com/' + instance.file.name
+        "url": 'http://d3jc1sdxhnw81f.cloudfront.net/' + instance.file.name
     }
     return JsonResponse(data)
