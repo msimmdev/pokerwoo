@@ -1,3 +1,4 @@
+import os
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
@@ -5,9 +6,10 @@ from players import models
 
 class SignupForm(UserCreationForm):
     player_choices = [('', '')]
-    # player_set = models.Player.objects.filter(user=None)
-    # for player in player_set:
-    #     player_choices.append((player.id, player.name))
+    if not os.getenv("POKERWOO_MIGRATE"):
+        player_set = models.Player.objects.filter(user=None)
+        for player in player_set:
+            player_choices.append((player.id, player.name))
 
     email = forms.EmailField(required=True, label='Email')
     player_id = forms.ChoiceField(label='Choose an existing player', choices = player_choices, required=False, widget=forms.Select(attrs={'class': 'form-control'}))
