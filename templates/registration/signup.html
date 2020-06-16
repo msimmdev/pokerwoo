@@ -2,39 +2,28 @@
 {% load static %}
 
 {% block content %}
+  {% for field in form %}
+    {% if field.errors %}
+      <div class="formError">{{ field.errors }}</div>
+    {% endif %}
+  {% endfor %}
 
-  <div class="wrapper">
-    <div id="formContent">
-      <div>
-        <img src="{% static "pokerwoo.svg" %}" id="icon" alt="Pokerwoo" />
-      </div>
-
-      {% for field in form %}
-        {% if field.errors %}
-          <div class="formError">{{ field.errors }}</div>
-        {% endif %}
-      {% endfor %}
-  
-      <div class="formHelp">{{ form.password1.help_text }}</div>
-      <!-- Login Form -->
-      <form method="post" action="{% url 'signup' %}">
-        {% csrf_token %}
-        <p>{{ form.username.label }}: <span class="required">*</span></p>
-		{{ form.username }}
-        <p>{{ form.email.label }}: <span class="required">*</span></p>
-        {{ form.email }}
-        <p>{{ form.password1.label }}: <span class="required">*</span></p>
-        {{ form.password1 }}
-        <p>{{ form.password2.label }}: <span class="required">*</span></p>
-		{{ form.password2 }}
-        <p>{{ form.player_id.label }}:</p>
-        {{ form.player_id }}
-        <p>{{ form.player_name.label }}:</p>
-        {{ form.player_name }}
-        <input type="submit" value="Sign Up">
-      </form>
-
-    </div>
-  </div>
-  
+  <div class="formHelp">{{ form.password1.help_text }}</div>
+  <!-- Login Form -->
+  <form method="post" action="{% url 'signup' %}">
+    {% csrf_token %}
+    <p>{{ form.username.label }}: <span class="required">*</span></p>
+{{ form.username }}
+    <p>{{ form.email.label }}: <span class="required">*</span></p>
+    {{ form.email }}
+    <p>{{ form.password1.label }}: <span class="required">*</span></p>
+    {{ form.password1 }}
+    <p>{{ form.password2.label }}: <span class="required">*</span></p>
+{{ form.password2 }}
+    <p>{{ form.player_id.label }}:</p>
+    {{ form.player_id }}
+    <p>{{ form.player_name.label }}:</p>
+    {{ form.player_name }}
+    <input type="submit" value="Sign Up">
+  </form>
 {% endblock %}

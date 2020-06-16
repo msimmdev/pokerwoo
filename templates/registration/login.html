@@ -2,34 +2,23 @@
 {% load static %}
 
 {% block content %}
+  {% if form.errors %}
+    <div class="formError">Login Failed.</div>
+  {% endif %}
 
-  <div class="wrapper">
-    <div id="formContent">
-      <div>
-        <img src="{% static "pokerwoo.svg" %}" id="icon" alt="Pokerwoo" />
-      </div>
+  <!-- Login Form -->
+  <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    <p>{{ form.username.label }}:</p>
+    {{ form.username }}
+    <p>{{ form.password.label }}:</p>
+    {{ form.password }}
+    <input type="submit" value="Log In">
+  </form>
 
-      {% if form.errors %}
-        <div class="formError">Login Failed.</div>
-      {% endif %}
-  
-      <!-- Login Form -->
-      <form method="post" action="{% url 'login' %}">
-        {% csrf_token %}
-        <p>{{ form.username.label }}:</p>
-        {{ form.username }}
-        <p>{{ form.password.label }}:</p>
-        {{ form.password }}
-        <input type="submit" value="Log In">
-      </form>
-  
-      <!-- Remind Passowrd -->
-      <div id="formFooter">
-        <a class="underlineHover" href="{% url 'password_reset' %}">Forgot Password?</a><br />
-        Don't have an account? <a class="underlineHover" href="{% url 'signup' %}">Sign Up</a>
-      </div>
-  
-    </div>
+  <!-- Remind Passowrd -->
+  <div id="formFooter">
+    <a class="underlineHover" href="{% url 'password_reset' %}">Forgot Password?</a><br />
+    Don't have an account? <a class="underlineHover" href="{% url 'signup' %}">Sign Up</a>
   </div>
-  
 {% endblock %}

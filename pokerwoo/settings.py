@@ -153,20 +153,29 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = 'https://pokerwoo.s3.eu-west-2.amazonaws.com/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'react', 'build'),
 )
+
+if not os.getenv("POKERWOO_STORAGE") == "local":
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
 
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# Email
+
+EMAIL_BACKEND = 'django_ses.SESBackend'
+
+# AWS 
 
 AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_STORAGE_BUCKET_NAME = 'pokerwoo'
 AWS_S3_REGION_NAME = 'eu-west-2'
+AWS_SES_REGION_NAME = 'eu-west-2'
+AWS_SES_REGION_ENDPOINT = 'email.eu-west-2.amazonaws.com'
 AWS_DEFAULT_ACL = None
