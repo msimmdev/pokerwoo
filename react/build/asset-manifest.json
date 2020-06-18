@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/css/main.485e0836.chunk.css",
-    "main.js": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/main.5e351c2f.chunk.js",
-    "main.js.map": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/main.5e351c2f.chunk.js.map",
+    "main.js": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/main.738008ba.chunk.js",
+    "main.js.map": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/main.738008ba.chunk.js.map",
     "runtime-main.js": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/runtime-main.8dda7587.js",
     "runtime-main.js.map": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/runtime-main.8dda7587.js.map",
     "static/js/2.2b2417fa.chunk.js": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/2.2b2417fa.chunk.js",
     "static/js/2.2b2417fa.chunk.js.map": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/2.2b2417fa.chunk.js.map",
     "index.html": "https://pokerwoo.s3.eu-west-2.amazonaws.com/index.html",
-    "precache-manifest.6539db750c7c75609399a9ddcfccd501.js": "https://pokerwoo.s3.eu-west-2.amazonaws.com/precache-manifest.6539db750c7c75609399a9ddcfccd501.js",
+    "precache-manifest.48efb0cd807de13cbc0cae5896f8386f.js": "https://pokerwoo.s3.eu-west-2.amazonaws.com/precache-manifest.48efb0cd807de13cbc0cae5896f8386f.js",
     "service-worker.js": "https://pokerwoo.s3.eu-west-2.amazonaws.com/service-worker.js",
     "static/css/main.485e0836.chunk.css.map": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/css/main.485e0836.chunk.css.map",
     "static/js/2.2b2417fa.chunk.js.LICENSE.txt": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/2.2b2417fa.chunk.js.LICENSE.txt",
@@ -20,6 +20,6 @@
     "static/js/runtime-main.8dda7587.js",
     "static/js/2.2b2417fa.chunk.js",
     "static/css/main.485e0836.chunk.css",
-    "static/js/main.5e351c2f.chunk.js"
+    "static/js/main.738008ba.chunk.js"
   ]
 }
