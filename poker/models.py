@@ -9,6 +9,7 @@ class Game(models.Model):
     place_two_multiplier = models.DecimalField(default=0, max_digits=19, decimal_places=10)
     place_three_multiplier = models.DecimalField(default=0, max_digits=19, decimal_places=10)
     complete = models.BooleanField(default=False, blank=True)
+    scorable = models.BooleanField(default=True, blank=True)
 
 class GameParticipant(models.Model):
     player_ref = models.PositiveIntegerField(default=0)
@@ -55,3 +56,19 @@ class RoundWinner(models.Model):
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
     round = models.ForeignKey(Round, on_delete=models.CASCADE)
     chips_won = models.PositiveIntegerField(default=0)
+
+class Stats(models.Model):
+    player_ref = models.PositiveIntegerField(default=0)
+    games_played = models.PositiveIntegerField(default=0)
+    games_won = models.PositiveIntegerField(default=0)
+    times_placed = models.PositiveIntegerField(default=0)
+    place_1 = models.PositiveIntegerField(default=0)
+    place_2 = models.PositiveIntegerField(default=0)
+    place_3 = models.PositiveIntegerField(default=0)
+    net_winnings = models.IntegerField(default=0)
+    average_placing = models.DecimalField(default=0, decimal_places=5, max_digits=10)
+    average_rating = models.DecimalField(default=0, decimal_places=5, max_digits=10)
+    win_rate = models.DecimalField(default=0, decimal_places=5, max_digits=10)
+    gain_per_game = models.DecimalField(default=0, decimal_places=5, max_digits=10)
+    place_rate = models.DecimalField(default=0, decimal_places=5, max_digits=10)
+    score = models.PositiveIntegerField(default=0)

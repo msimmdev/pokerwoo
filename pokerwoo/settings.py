@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'storages',
     'django_filters',
+    'background_task',
     'players',
     'poker',
     'schedule',
@@ -68,6 +69,7 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = [
     'http://127.0.0.1:3000',
     'http://127.0.0.1:5000',
+    'http://127.0.0.1:8000',
 ]
 
 TEMPLATES = [

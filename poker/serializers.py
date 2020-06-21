@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer, PrimaryKeyRelatedField
-from poker.models import Game, GameParticipant, Table, TableParticipant, Round, Hand, RoundWinner
+from poker.models import Game, GameParticipant, Table, TableParticipant, Round, Hand, RoundWinner, Stats
 
 class GameParticipantSerializer(ModelSerializer):
     game = PrimaryKeyRelatedField(read_only=True)
@@ -87,3 +87,24 @@ class RoundWinnerSerializer(ModelSerializer):
     class Meta:
         model = RoundWinner
         fields = ['id', 'table_participant', 'round', 'table', 'game', 'chips_won']
+
+class StatsSerializer(ModelSerializer):
+    class Meta:
+        model = Stats
+        fields = [
+            'id',
+            'player_ref',
+            'games_played',
+            'games_won',
+            'times_placed',
+            'place_1',
+            'place_2',
+            'place_3',
+            'net_winnings',
+            'average_placing',
+            'average_rating',
+            'win_rate',
+            'place_rate',
+            'gain_per_game',
+            'score',
+        ]

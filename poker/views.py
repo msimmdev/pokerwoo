@@ -1,94 +1,79 @@
-from rest_framework import viewsets, permissions, views, response, status
-from poker.models import Game, GameParticipant, Table, TableParticipant, Round, Hand, RoundWinner
-from poker.serializers import GameSerializer, GameParticipantSerializer, TableSerializer, TableParticipantSerializer, RoundSerializer, HandSerializer, RoundWinnerSerializer
-import sys
+from rest_framework import viewsets, permissions, views, response
+from . import models, serializers, tasks
 
 class GameViewSet(viewsets.ModelViewSet):
-    queryset = Game.objects.all()
-    serializer_class = GameSerializer
+    queryset = models.Game.objects.all()
+    serializer_class = serializers.GameSerializer
     permission_classes = [permissions.IsAuthenticated]
     filterset_fields = ['date_played']
+
+    def perform_create(self, serializer):
+        serializer.save()
+        game = self.get_object()
+        if game.complete:
+            for participant in game.participants.all():
+                tasks.create_stats(participant.player_ref)
+
+    def perform_update(self, serializer):
+        serializer.save()
+        game = self.get_object()
+        if game.complete:
+            for participant in game.participants.all():
+                tasks.create_stats(participant.player_ref)
 
 class PlayerGames(views.APIView):
     def get(self, request):
         games = []
         if 'player_ref' in request.query_params:
-            participants = GameParticipant.objects.filter(player_ref=request.query_params['player_ref'])
+            participants = models.GameParticipant.objects.filter(player_ref=request.query_params['player_ref'])
             for participant in participants:
                 games.append(participant.game)
-        serializer = GameSerializer(games, many=True, context={'request': request})
+        serializer = serializers.GameSerializer(games, many=True, context={'request': request})
         return response.Response(serializer.data)
 
 class GameParticipantViewSet(viewsets.ModelViewSet):
-    serializer_class = GameParticipantSerializer
+    serializer_class = serializers.GameParticipantSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
-        return GameParticipant.objects.filter(game=self.kwargs['game_pk'])
+        return models.GameParticipant.objects.filter(game=self.kwargs['game_pk'])
 
     def perform_create(self, serializer):
-        serializer.save(game=Game.objects.get(pk=self.kwargs['game_pk']))
+        serializer.save(game=models.Game.objects.get(pk=self.kwargs['game_pk']))
+        participant = self.get_object()
+        tasks.create_stats(participant.player_ref)
+
+    def perform_update(self, serializer):
+        serializer.save()
+        participant = self.get_object()
+        tasks.create_stats(participant.player_ref)
+        
 
 class TableViewSet(viewsets.ModelViewSet):
-    serializer_class = TableSerializer
+    serializer_class = serializers.TableSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
-        return Table.objects.filter(game=self.kwargs['game_pk'])
+        return models.Table.objects.filter(game=self.kwargs['game_pk'])
 
     def perform_create(self, serializer):
-        serializer.save(game=Game.objects.get(pk=self.kwargs['game_pk']))
+        serializer.save(game=models.Game.objects.get(pk=self.kwargs['game_pk']))
 
 class TableParticipantViewSet(viewsets.ModelViewSet):
-    serializer_class = TableParticipantSerializer
+    serializer_class = serializers.TableParticipantSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
-        return TableParticipant.objects.filter(table=self.kwargs['table_pk'], game=self.kwargs['game_pk'])
+        return models.TableParticipant.objects.filter(table=self.kwargs['table_pk'], game=self.kwargs['game_pk'])
 
     def perform_create(self, serializer):
         serializer.save(
-            game=Game.objects.get(pk=self.kwargs['game_pk']),
-            table=Table.objects.get(pk=self.kwargs['table_pk']),
+            game=models.Game.objects.get(pk=self.kwargs['game_pk']),
+            table=models.Table.objects.get(pk=self.kwargs['table_pk']),
         )
 
-class RoundViewSet(viewsets.ModelViewSet):
-    serializer_class = RoundSerializer
+class StatsViewSet(viewsets.ModelViewSet):
+    queryset = models.Stats.objects.all()
+    serializer_class = serializers.StatsSerializer
     permission_classes = [permissions.IsAuthenticated]
-
-    def get_queryset(self):
-        return Round.objects.filter(table=self.kwargs['table_pk'], game=self.kwargs['table_pk'])
-
-    def perform_create(self, serializer):
-        serializer.save(
-            game=Game.objects.get(pk=self.kwargs['game_pk']),
-            table=Table.objects.get(pk=self.kwargs['table_pk']),
-        )
-
-class HandViewSet(viewsets.ModelViewSet):
-    serializer_class = HandSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
-    def get_queryset(self):
-        return Hand.objects.filter(round=self.kwargs['round_pk'], table=self.kwargs['table_pk'], game=self.kwargs['table_pk'])
-        
-    def perform_create(self, serializer):
-        serializer.save(
-            game=Game.objects.get(pk=self.kwargs['game_pk']),
-            table=Table.objects.get(pk=self.kwargs['table_pk']),
-            round=Round.objects.get(pk=self.kwargs['round_pk']),
-        )
-
-class RoundWinnerViewSet(viewsets.ModelViewSet):
-    serializer_class = RoundWinnerSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
-    def get_queryset(self):
-        return RoundWinner.objects.filter(round=self.kwargs['round_pk'], table=self.kwargs['table_pk'], game=self.kwargs['table_pk'])
-
-    def perform_create(self, serializer):
-        serializer.save(
-            game=Game.objects.get(pk=self.kwargs['game_pk']),
-            table=Table.objects.get(pk=self.kwargs['table_pk']),
-            round=Round.objects.get(pk=self.kwargs['round_pk']),
-        )
+    filterset_fields = ['player_ref']
