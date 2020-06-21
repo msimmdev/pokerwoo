@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3d884e3a840288325f914f499ad6768f",
+    "revision": "db459047c94eb685ef0103b701839503",
     "url": "https://pokerwoo.s3.eu-west-2.amazonaws.com/index.html"
   },
   {
-    "revision": "9fde82f6ed5b00597f16",
+    "revision": "de8c35c32d82529cab5f",
     "url": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/css/main.485e0836.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/2.105c6132.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "9fde82f6ed5b00597f16",
-    "url": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/main.a237e4d0.chunk.js"
+    "revision": "de8c35c32d82529cab5f",
+    "url": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/main.5b93fbc8.chunk.js"
   },
   {
     "revision": "b026e0156f8af8fb7014",
