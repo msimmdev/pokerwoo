@@ -10,5 +10,4 @@ def upload_path(instance, filename):
     return 'avatars/{0}{1}'.format(str(uuid.uuid4()), file_extension)
 
 class AvatarUpload(models.Model):
-    fs = S3Boto3Storage(bucket='pokerwoo')
-    file = models.FileField(upload_to=upload_path, storage=fs)
+    file = models.FileField(upload_to=upload_path, storage=MediaStorage)
