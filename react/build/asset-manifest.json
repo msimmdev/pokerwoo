@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/css/main.485e0836.chunk.css",
-    "main.js": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/main.738008ba.chunk.js",
-    "main.js.map": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/main.738008ba.chunk.js.map",
+    "main.js": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/main.a237e4d0.chunk.js",
+    "main.js.map": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/main.a237e4d0.chunk.js.map",
     "runtime-main.js": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/runtime-main.8dda7587.js",
     "runtime-main.js.map": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/runtime-main.8dda7587.js.map",
-    "static/js/2.2b2417fa.chunk.js": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/2.2b2417fa.chunk.js",
-    "static/js/2.2b2417fa.chunk.js.map": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/2.2b2417fa.chunk.js.map",
+    "static/js/2.105c6132.chunk.js": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/2.105c6132.chunk.js",
+    "static/js/2.105c6132.chunk.js.map": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/2.105c6132.chunk.js.map",
     "index.html": "https://pokerwoo.s3.eu-west-2.amazonaws.com/index.html",
-    "precache-manifest.48efb0cd807de13cbc0cae5896f8386f.js": "https://pokerwoo.s3.eu-west-2.amazonaws.com/precache-manifest.48efb0cd807de13cbc0cae5896f8386f.js",
+    "precache-manifest.26310e756657361a73b95413a94003af.js": "https://pokerwoo.s3.eu-west-2.amazonaws.com/precache-manifest.26310e756657361a73b95413a94003af.js",
     "service-worker.js": "https://pokerwoo.s3.eu-west-2.amazonaws.com/service-worker.js",
     "static/css/main.485e0836.chunk.css.map": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/css/main.485e0836.chunk.css.map",
-    "static/js/2.2b2417fa.chunk.js.LICENSE.txt": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/2.2b2417fa.chunk.js.LICENSE.txt",
+    "static/js/2.105c6132.chunk.js.LICENSE.txt": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/2.105c6132.chunk.js.LICENSE.txt",
     "static/media/pokerwoo-icon.b95e5959.svg": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/media/pokerwoo-icon.b95e5959.svg",
     "static/media/pokerwoo.94759704.svg": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/media/pokerwoo.94759704.svg",
     "static/media/saarland.ttf": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/media/saarland.a8521e38.ttf"
   },
   "entrypoints": [
     "static/js/runtime-main.8dda7587.js",
-    "static/js/2.2b2417fa.chunk.js",
+    "static/js/2.105c6132.chunk.js",
     "static/css/main.485e0836.chunk.css",
-    "static/js/main.738008ba.chunk.js"
+    "static/js/main.a237e4d0.chunk.js"
   ]
 }

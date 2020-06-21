@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "https://pokerwoo.s3.eu-west-2.amazonaws.com/precache-manifest.48efb0cd807de13cbc0cae5896f8386f.js"
+  "https://pokerwoo.s3.eu-west-2.amazonaws.com/precache-manifest.26310e756657361a73b95413a94003af.js"
 );
 
 self.addEventListener('message', (event) => {
