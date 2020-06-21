@@ -1,4 +1,4 @@
 #!/bin/bash
 
 source /var/app/venv/*/bin/activate
-python manage.py migrate --noinput
+POKERWOO_MIGRATE=1 python manage.py migrate --noinput

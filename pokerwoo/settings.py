@@ -30,7 +30,7 @@ if os.getenv('POKERWOO_DEBUG'):
 else:
     DEBUG = False
 
-ALLOWED_HOSTS = ['www.pokerwoo.com', 'pokerwoo-prod3.eu-west-2.elasticbeanstalk.com', '127.0.0.1']
+ALLOWED_HOSTS = ['www.pokerwoo.com', 'pokerwoo-prod3.eu-west-2.elasticbeanstalk.com', '127.0.0.1', 'demo.pokerwoo.com', 'pokerwoo-demo.eu-west-2.elasticbeanstalk.com']
 
 
 # Application definition
