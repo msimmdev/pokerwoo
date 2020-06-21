@@ -1,7 +1,6 @@
 import os
 import uuid
 from django.db import models
-from storages.backends.s3boto3 import S3Boto3Storage
 
 # Create your models here.
 
