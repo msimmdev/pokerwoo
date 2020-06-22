@@ -170,6 +170,7 @@ REST_FRAMEWORK = {
 # Email
 
 EMAIL_BACKEND = 'django_ses.SESBackend'
+DEFAULT_FROM_EMAIL = 'michael@simm.dev'
 
 # AWS 
 
