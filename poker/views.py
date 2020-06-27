@@ -8,8 +8,7 @@ class GameViewSet(viewsets.ModelViewSet):
     filterset_fields = ['date_played']
 
     def perform_create(self, serializer):
-        serializer.save()
-        game = self.get_object()
+        game = serializer.save()
         if game.complete:
             for participant in game.participants.all():
                 tasks.create_stats(participant.player_ref)
@@ -39,8 +38,7 @@ class GameParticipantViewSet(viewsets.ModelViewSet):
         return models.GameParticipant.objects.filter(game=self.kwargs['game_pk'])
 
     def perform_create(self, serializer):
-        serializer.save(game=models.Game.objects.get(pk=self.kwargs['game_pk']))
-        participant = self.get_object()
+        participant = serializer.save(game=models.Game.objects.get(pk=self.kwargs['game_pk']))
         tasks.create_stats(participant.player_ref)
 
     def perform_update(self, serializer):
