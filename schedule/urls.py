@@ -3,7 +3,7 @@ from schedule import views
 from rest_framework_nested.routers import SimpleRouter, NestedSimpleRouter
 
 router = SimpleRouter()
-router.register(r'sessions', views.SessionViewSet)
+router.register(r'sessions', views.SessionViewSet, 'sessions')
 
 player_router = NestedSimpleRouter(router, r'sessions', lookup='session')
 player_router.register(r'players', views.SessionPlayerViewSet, basename='sessionplayer')

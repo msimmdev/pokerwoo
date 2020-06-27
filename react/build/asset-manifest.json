@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/css/main.485e0836.chunk.css",
-    "main.js": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/main.513485bd.chunk.js",
-    "main.js.map": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/main.513485bd.chunk.js.map",
-    "runtime-main.js": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/runtime-main.8dda7587.js",
-    "runtime-main.js.map": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/runtime-main.8dda7587.js.map",
-    "static/js/2.105c6132.chunk.js": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/2.105c6132.chunk.js",
-    "static/js/2.105c6132.chunk.js.map": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/2.105c6132.chunk.js.map",
-    "index.html": "https://pokerwoo.s3.eu-west-2.amazonaws.com/index.html",
-    "precache-manifest.a1a5857f2310bf9129ed4582569008dc.js": "https://pokerwoo.s3.eu-west-2.amazonaws.com/precache-manifest.a1a5857f2310bf9129ed4582569008dc.js",
-    "service-worker.js": "https://pokerwoo.s3.eu-west-2.amazonaws.com/service-worker.js",
-    "static/css/main.485e0836.chunk.css.map": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/css/main.485e0836.chunk.css.map",
-    "static/js/2.105c6132.chunk.js.LICENSE.txt": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/js/2.105c6132.chunk.js.LICENSE.txt",
-    "static/media/pokerwoo-icon.b95e5959.svg": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/media/pokerwoo-icon.b95e5959.svg",
-    "static/media/pokerwoo.94759704.svg": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/media/pokerwoo.94759704.svg",
-    "static/media/saarland.ttf": "https://pokerwoo.s3.eu-west-2.amazonaws.com/static/media/saarland.a8521e38.ttf"
+    "main.css": "https://d3cc22uoc9h9rq.cloudfront.net/static/css/main.3720d46a.chunk.css",
+    "main.js": "https://d3cc22uoc9h9rq.cloudfront.net/static/js/main.0a71ae20.chunk.js",
+    "main.js.map": "https://d3cc22uoc9h9rq.cloudfront.net/static/js/main.0a71ae20.chunk.js.map",
+    "runtime-main.js": "https://d3cc22uoc9h9rq.cloudfront.net/static/js/runtime-main.eeb7d129.js",
+    "runtime-main.js.map": "https://d3cc22uoc9h9rq.cloudfront.net/static/js/runtime-main.eeb7d129.js.map",
+    "static/js/2.181a43f8.chunk.js": "https://d3cc22uoc9h9rq.cloudfront.net/static/js/2.181a43f8.chunk.js",
+    "static/js/2.181a43f8.chunk.js.map": "https://d3cc22uoc9h9rq.cloudfront.net/static/js/2.181a43f8.chunk.js.map",
+    "index.html": "https://d3cc22uoc9h9rq.cloudfront.net/index.html",
+    "precache-manifest.aa77ab069f03d9712f0f2996518ef876.js": "https://d3cc22uoc9h9rq.cloudfront.net/precache-manifest.aa77ab069f03d9712f0f2996518ef876.js",
+    "service-worker.js": "https://d3cc22uoc9h9rq.cloudfront.net/service-worker.js",
+    "static/css/main.3720d46a.chunk.css.map": "https://d3cc22uoc9h9rq.cloudfront.net/static/css/main.3720d46a.chunk.css.map",
+    "static/js/2.181a43f8.chunk.js.LICENSE.txt": "https://d3cc22uoc9h9rq.cloudfront.net/static/js/2.181a43f8.chunk.js.LICENSE.txt",
+    "static/media/pokerwoo-icon.b95e5959.svg": "https://d3cc22uoc9h9rq.cloudfront.net/static/media/pokerwoo-icon.b95e5959.svg",
+    "static/media/pokerwoo.94759704.svg": "https://d3cc22uoc9h9rq.cloudfront.net/static/media/pokerwoo.94759704.svg",
+    "static/media/saarland.ttf": "https://d3cc22uoc9h9rq.cloudfront.net/static/media/saarland.a8521e38.ttf"
   },
   "entrypoints": [
-    "static/js/runtime-main.8dda7587.js",
-    "static/js/2.105c6132.chunk.js",
-    "static/css/main.485e0836.chunk.css",
-    "static/js/main.513485bd.chunk.js"
+    "static/js/runtime-main.eeb7d129.js",
+    "static/js/2.181a43f8.chunk.js",
+    "static/css/main.3720d46a.chunk.css",
+    "static/js/main.0a71ae20.chunk.js"
   ]
 }

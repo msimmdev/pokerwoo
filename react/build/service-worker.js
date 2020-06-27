@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "https://pokerwoo.s3.eu-west-2.amazonaws.com/precache-manifest.a1a5857f2310bf9129ed4582569008dc.js"
+  "https://d3cc22uoc9h9rq.cloudfront.net/precache-manifest.aa77ab069f03d9712f0f2996518ef876.js"
 );
 
 self.addEventListener('message', (event) => {
@@ -33,7 +33,7 @@ workbox.core.clientsClaim();
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute(workbox.precaching.getCacheKeyForURL("https://pokerwoo.s3.eu-west-2.amazonaws.com/index.html"), {
+workbox.routing.registerNavigationRoute(workbox.precaching.getCacheKeyForURL("https://d3cc22uoc9h9rq.cloudfront.net/index.html"), {
   
   blacklist: [/^\/_/,/\/[^\/?]+\.[^\/]+$/],
 });
