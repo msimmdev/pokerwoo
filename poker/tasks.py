@@ -72,6 +72,8 @@ def create_stats(player_ref):
                     stat_object.net_winnings = (pot / split3) - game.stake
                 stat_object.place_3 = stat_object.place_3 + 1
                 stat_object.times_placed = stat_object.times_placed + 1
+            else:
+                stat_object.net_winnings = 0 - game.stake
 
     if stat_object.games_played > 0:
         if sum_placing > 0:
