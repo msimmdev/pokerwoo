@@ -14,6 +14,6 @@ def avatarUpload(request):
         "name": file_item.name,
         "size": file_item.size,
         "type": file_item.content_type,
-        "url": 'http://d3jc1sdxhnw81f.cloudfront.net/' + instance.file.name
+        "url": 'https://d3jc1sdxhnw81f.cloudfront.net/' + instance.file.name
     }
     return JsonResponse(data)
