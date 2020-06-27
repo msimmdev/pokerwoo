@@ -56,14 +56,14 @@ def create_stats(player_ref):
             if participant.place == 1:
                 if split1 > 0:
                     pot = game.stake * len(player_list)
-                    stat_object.net_winnings = (pot / split1) - game.stake
+                    stat_object.net_winnings = stat_object.net_winnings + (pot / split1) - game.stake
                 stat_object.games_won = stat_object.games_won + 1
                 stat_object.place_1 = stat_object.place_1 + 1
                 stat_object.times_placed = stat_object.times_placed + 1
             elif participant.place == 2 and game.place_two_multiplier > 0:
                 if split2 > 0:
                     pot = game.stake * game.place_two_multiplier
-                    stat_object.net_winnings = (pot / split2) - game.stake
+                    stat_object.net_winnings = stat_object.net_winnings + (pot / split2) - game.stake
                 stat_object.place_2 = stat_object.place_2 + 1
                 stat_object.times_placed = stat_object.times_placed + 1
             elif participant.place == 3 and game.place_three_multiplier > 0:
@@ -73,7 +73,7 @@ def create_stats(player_ref):
                 stat_object.place_3 = stat_object.place_3 + 1
                 stat_object.times_placed = stat_object.times_placed + 1
             else:
-                stat_object.net_winnings = 0 - game.stake
+                stat_object.net_winnings = stat_object.net_winnings - game.stake
 
     if stat_object.games_played > 0:
         if sum_placing > 0:
