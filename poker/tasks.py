@@ -47,6 +47,8 @@ def create_stats(player_ref):
                     split2 = split2 + 1
                 if player.place == 3:
                     split3 = split3 + 1
+                if player.place == 0:
+                    game.scorable = False
 
             if game.scorable:
                 stat_object.score = stat_object.score + (len(player_list) - participant.place) + 1
