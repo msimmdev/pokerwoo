@@ -58,7 +58,7 @@ def create_stats(player_ref):
 
             if participant.place == 1:
                 if split1 > 0:
-                    pot = game.stake * len(player_list)
+                    pot = game.stake * len(player_list) - game.stake * game.place_two_multiplier - game.stake * game.place_three_multiplier
                     stat_object.net_winnings = stat_object.net_winnings + Decimal((pot / split1) - game.stake)
                 stat_object.games_won = stat_object.games_won + 1
                 stat_object.place_1 = stat_object.place_1 + 1
