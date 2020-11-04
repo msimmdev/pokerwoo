@@ -6,6 +6,7 @@ from . import models
 def create_stats(player_ref):
     participantions = models.GameParticipant.objects.filter(player_ref=player_ref)
     stats = models.Stats.objects.filter(player_ref=player_ref)
+    statable_games = 0;
 
     if len(stats) == 1:
         stat_object = stats[0]
@@ -55,6 +56,7 @@ def create_stats(player_ref):
                 stat_object.score = stat_object.score + (len(player_list) - participant.place) + 1
                 sum_placing = sum_placing + participant.place
                 sum_rating = sum_rating + (max_place / 2) - participant.place
+                statable_games = statable_games + 1
 
             if participant.place == 1:
                 if split1 > 0:
@@ -80,9 +82,9 @@ def create_stats(player_ref):
 
     if stat_object.games_played > 0:
         if sum_placing > 0:
-            stat_object.average_placing = sum_placing / stat_object.games_played
+            stat_object.average_placing = sum_placing / statable_games
         if sum_rating > 0:
-            stat_object.average_rating = sum_rating / stat_object.games_played
+            stat_object.average_rating = sum_rating / statable_games
         stat_object.win_rate = (stat_object.games_won / stat_object.games_played)
         stat_object.place_rate = (stat_object.times_placed / stat_object.games_played)
         stat_object.gain_per_game = (stat_object.net_winnings / stat_object.games_played)
