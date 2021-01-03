@@ -1,5 +1,33 @@
 from rest_framework.serializers import ModelSerializer, PrimaryKeyRelatedField
-from poker.models import Game, GameParticipant, Table, TableParticipant, Stats
+from poker.models import Game, GameParticipant, Table, TableParticipant, Stats, Competition, CompetitionParticipant, CompetitionGame
+
+class CompetitionParticipantSerializer(ModelSerializer):
+    class Meta:
+        model = CompetitionParticipant
+        fields = [
+            'player_ref',
+        ]
+
+class CompetitionGameSerializer(ModelSerializer):
+    class Meta:
+        model = CompetitionGame
+        fields = [
+            'id',
+            'game',
+            'competition',
+        ]
+
+class CompetitionSerializer(ModelSerializer):
+    participants = CompetitionParticipantSerializer(read_only=True, many=True)
+    class Meta:
+        model = Competition
+        fields = [
+            'id',
+            'name',
+            'order',
+            'active',
+            'participants',
+        ]
 
 class GameParticipantSerializer(ModelSerializer):
     game = PrimaryKeyRelatedField(read_only=True)
@@ -10,6 +38,7 @@ class GameParticipantSerializer(ModelSerializer):
 class GameSerializer(ModelSerializer):
     participants = GameParticipantSerializer(read_only=True, many=True)
     tables = PrimaryKeyRelatedField(read_only=True, many=True)
+    competitions = CompetitionGameSerializer(read_only=True, many=True)
     class Meta:
         model = Game
         fields = [
@@ -22,6 +51,7 @@ class GameSerializer(ModelSerializer):
             'complete',
             'participants',
             'tables',
+            'competitions',
         ]
 
 class TableParticipantSerializer(ModelSerializer):
@@ -57,4 +87,6 @@ class StatsSerializer(ModelSerializer):
             'place_rate',
             'gain_per_game',
             'score',
+            'competition',
         ]
+

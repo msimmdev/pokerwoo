@@ -11,14 +11,14 @@ class GameViewSet(viewsets.ModelViewSet):
         game = serializer.save()
         if game.complete:
             for participant in game.participants.all():
-                tasks.create_stats(participant.player_ref)
+                tasks.create_stats(participant.player_ref, game.competition)
 
     def perform_update(self, serializer):
         serializer.save()
         game = self.get_object()
         if game.complete:
             for participant in game.participants.all():
-                tasks.create_stats(participant.player_ref)
+                tasks.create_stats(participant.player_ref, game.competition)
 
 class PlayerGames(views.APIView):
     def get(self, request):
@@ -38,13 +38,15 @@ class GameParticipantViewSet(viewsets.ModelViewSet):
         return models.GameParticipant.objects.filter(game=self.kwargs['game_pk'])
 
     def perform_create(self, serializer):
-        participant = serializer.save(game=models.Game.objects.get(pk=self.kwargs['game_pk']))
-        tasks.create_stats(participant.player_ref)
+        game = models.Game.objects.get(pk=self.kwargs['game_pk'])
+        participant = serializer.save(game=game)
+        tasks.create_stats(participant.player_ref, game.competition)
 
     def perform_update(self, serializer):
         serializer.save()
         participant = self.get_object()
-        tasks.create_stats(participant.player_ref)
+        game = models.Game.objects.get(pk=self.kwargs['game_pk'])
+        tasks.create_stats(participant.player_ref, game.competition)
         
 
 class TableViewSet(viewsets.ModelViewSet):
@@ -74,4 +76,17 @@ class StatsViewSet(viewsets.ModelViewSet):
     queryset = models.Stats.objects.all()
     serializer_class = serializers.StatsSerializer
     permission_classes = [permissions.IsAuthenticated]
-    filterset_fields = ['player_ref']
+    filterset_fields = ['player_ref', 'competition']
+
+class CompetitionViewSet(viewsets.ModelViewSet):
+    queryset = models.Competition.objects.all()
+    serializer_class = serializers.CompetitionSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    filterset_fields = ['active']
+
+class CompetitionGameViewSet(viewsets.ModelViewSet):
+    serializer_class = serializers.CompetitionGameSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return models.CompetitionGame.objects.filter(competition=self.kwargs['competition_pk'])

@@ -29,8 +29,22 @@ class TableParticipant(models.Model):
     table = models.ForeignKey(Table, on_delete=models.CASCADE, related_name='participants')
     success = models.BooleanField(default=False, blank=True)
 
+class Competition(models.Model):
+    name = models.CharField(max_length=255)
+    order = models.PositiveIntegerField(default=0)
+    active = models.BooleanField(default=False, blank=True)
+
+class CompetitionParticipant(models.Model):
+    player_ref = models.PositiveIntegerField(default=0)
+    competition = models.ForeignKey(Competition, on_delete=models.CASCADE, related_name='participants')
+
+class CompetitionGame(models.Model):
+    game = models.ForeignKey(Game, on_delete=models.CASCADE, related_name='competitions')
+    competition = models.ForeignKey(Competition, on_delete=models.CASCADE)
+
 class Stats(models.Model):
     player_ref = models.PositiveIntegerField(default=0)
+    competition = models.ForeignKey(Competition, on_delete=models.CASCADE, default=1)
     games_played = models.PositiveIntegerField(default=0)
     games_won = models.PositiveIntegerField(default=0)
     times_placed = models.PositiveIntegerField(default=0)
