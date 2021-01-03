@@ -1,8 +1,19 @@
 from rest_framework.serializers import ModelSerializer
 from django.contrib.auth.models import User
-from players.models import Player, PaymentObligation
+from players.models import Player, PaymentObligation, Award
+
+class AwardSerializer(ModelSerializer):
+    class Meta:
+        model = Award
+        fields = [
+            'name',
+            'award_key',
+            'player',
+            'granted',
+        ]
 
 class PlayerSerializer(ModelSerializer):
+    awards = AwardSerializer(read_only=True, many=True)
     class Meta:
         model = Player
         fields = [
@@ -16,6 +27,7 @@ class PlayerSerializer(ModelSerializer):
             'bank_account_number',
             'bank_sort_code',
             'active',
+            'awards',
         ]
 
 class PaymentObligationSerializer(ModelSerializer):

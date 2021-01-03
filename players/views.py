@@ -1,4 +1,6 @@
 from rest_framework import viewsets, permissions, views, response, status
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
 from players.models import Player, PaymentObligation
 from players.serializers import PlayerSerializer, PaymentObligationSerializer, UserSerializer
 from django.contrib.auth.models import User
@@ -20,6 +22,8 @@ class UserViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
 class ActivePlayer(views.APIView):
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    permission_classes = [IsAuthenticated]
     def get(self, request):
         players = Player.objects.filter(user=self.request.user.id)
         if len(players) > 0:

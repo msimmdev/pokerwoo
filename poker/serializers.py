@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer, PrimaryKeyRelatedField
-from poker.models import Game, GameParticipant, Table, TableParticipant, Round, Hand, RoundWinner, Stats
+from poker.models import Game, GameParticipant, Table, TableParticipant, Stats
 
 class GameParticipantSerializer(ModelSerializer):
     game = PrimaryKeyRelatedField(read_only=True)
@@ -37,56 +37,6 @@ class TableSerializer(ModelSerializer):
     class Meta:
         model = Table
         fields = ['id', 'level', 'designation', 'game', 'progressing', 'starting_chips', 'participants']
-
-class RoundSerializer(ModelSerializer):
-    table = PrimaryKeyRelatedField(read_only=True)
-    game = PrimaryKeyRelatedField(read_only=True)
-    parent_lookup_kwargs = {
-        'game_pk' : 'game__pk',
-        'table_pk' : 'table__pk',
-    }
-    class Meta:
-        model = Round
-        fields = [
-            'id',
-            'table',
-            'game',
-            'round_number',
-            'big_blind',
-            'small_blind',
-            'blind_amount',
-            'flop1',
-            'flop2',
-            'flop3',
-            'turn',
-            'river',
-        ]
-
-class HandSerializer(ModelSerializer):
-    round = PrimaryKeyRelatedField(read_only=True)
-    table = PrimaryKeyRelatedField(read_only=True)
-    game = PrimaryKeyRelatedField(read_only=True)
-    parent_lookup_kwargs = {
-        'game_pk' : 'game__pk',
-        'table_pk' : 'table__pk',
-        'round_pk' : 'round__pk',
-    }
-    class Meta:
-        model = Hand
-        fields = ['id', 'table_participant', 'round', 'table', 'game', 'card1', 'card2']
-
-class RoundWinnerSerializer(ModelSerializer):
-    round = PrimaryKeyRelatedField(read_only=True)
-    table = PrimaryKeyRelatedField(read_only=True)
-    game = PrimaryKeyRelatedField(read_only=True)
-    parent_lookup_kwargs = {
-        'game_pk' : 'game__pk',
-        'table_pk' : 'table__pk',
-        'round_pk' : 'round__pk',
-    }
-    class Meta:
-        model = RoundWinner
-        fields = ['id', 'table_participant', 'round', 'table', 'game', 'chips_won']
 
 class StatsSerializer(ModelSerializer):
     class Meta:

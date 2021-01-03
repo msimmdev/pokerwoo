@@ -24,3 +24,8 @@ class PaymentObligation(models.Model):
     payment_sent = models.BooleanField(default=False, blank=True)
     payment_confirmed = models.BooleanField(default=False, blank=True)
     
+class Award(models.Model):
+    player = models.ForeignKey(Player, on_delete=models.CASCADE, related_name='awards')
+    name = models.CharField(max_length=255)
+    award_key = models.CharField(max_length=255)
+    granted = models.DateTimeField(auto_now_add=True)
