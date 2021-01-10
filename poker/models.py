@@ -58,3 +58,4 @@ class Stats(models.Model):
     gain_per_game = models.DecimalField(default=0, decimal_places=5, max_digits=10)
     place_rate = models.DecimalField(default=0, decimal_places=5, max_digits=10)
     score = models.PositiveIntegerField(default=0)
+    new_score = models.IntegerField(default=0)

@@ -87,6 +87,7 @@ class StatsSerializer(ModelSerializer):
             'place_rate',
             'gain_per_game',
             'score',
+            'new_score',
             'competition',
         ]
 

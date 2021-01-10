@@ -27,6 +27,7 @@ def create_stats(player_ref, competition):
     stat_object.average_placing = 0
     stat_object.average_rating = 0
     stat_object.score = 0
+    stat_object.new_score = 0
     stat_object.win_rate = 0
     stat_object.place_rate = 0
     stat_object.gain_per_game = 0
@@ -67,6 +68,51 @@ def create_stats(player_ref, competition):
                     sum_rating = sum_rating + \
                         (max_place / 2) - participant.place
                     statable_games = statable_games + 1
+
+                    winner_score = len(player_list) * 6
+                    second_score = round(len(player_list) * 2.5)
+
+                    if len(player_list) <= 2:
+                        score_stake = 12
+                        score_place = 1
+                    elif len(player_list) == 3:
+                        score_stake = 9
+                        score_place = 1
+                    elif len(player_list) == 4:
+                        score_stake = 8
+                        score_place = 1
+                    elif len(player_list) == 5:
+                        score_stake = 14
+                        score_place = 2
+                    elif len(player_list) == 6:
+                        score_stake = 13
+                        score_place = 2
+                    elif len(player_list) == 7:
+                        score_stake = 12
+                        score_place = 2
+                    elif len(player_list) == 8:
+                        score_stake = 16
+                        score_place = 3
+                    elif len(player_list) == 9:
+                        score_stake = 15
+                        score_place = 3
+                    elif len(player_list) >= 10:
+                        score_stake = 14
+                        score_place = 3
+
+                    score_pot = score_stake * (len(player_list) - score_place)
+                    
+                    if participant.place == 1:
+                        stat_object.new_score = stat_object.new_score + winner_score
+                    elif participant.place == 2 and score_place == 2:
+                        stat_object.new_score =  stat_object.new_score + score_pot - winner_score
+                    elif participant.place == 2 and score_place == 3:
+                        stat_object.new_score = stat_object.new_score + second_score
+                    elif participant.place == 3 and score_place == 3:
+                        stat_object.new_score = stat_object.new_score + score_pot - winner_score - second_score
+                    else:
+                        stat_object.new_score = stat_object.new_score - score_stake
+
 
                 if participant.place == 1:
                     if split1 > 0:
