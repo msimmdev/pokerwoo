@@ -4,6 +4,11 @@ from django.db import migrations, models
 import django.db.models.deletion
 
 
+def create_competition(apps, schema_editor):
+    Competition = apps.get_model('poker', 'Competition')
+    comp = Competition(name='2020 Covid Poker', order=1, active=True)
+    comp.save()
+
 class Migration(migrations.Migration):
 
     dependencies = [
@@ -36,4 +41,5 @@ class Migration(migrations.Migration):
                 ('game', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='poker.Game')),
             ],
         ),
+        migrations.RunPython(create_competition)
     ]
