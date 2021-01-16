@@ -11,14 +11,16 @@ class GameViewSet(viewsets.ModelViewSet):
         game = serializer.save()
         if game.complete:
             for participant in game.participants.all():
-                tasks.create_stats(participant.player_ref, game.competition)
+                for comp in game.competitions.all():
+                    tasks.create_stats(participant.player_ref, comp.competition.id)
 
     def perform_update(self, serializer):
         serializer.save()
         game = self.get_object()
         if game.complete:
             for participant in game.participants.all():
-                tasks.create_stats(participant.player_ref, game.competition)
+                for comp in game.competitions.all():
+                    tasks.create_stats(participant.player_ref, comp.competition.id)
 
 class PlayerGames(views.APIView):
     def get(self, request):
@@ -40,13 +42,19 @@ class GameParticipantViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         game = models.Game.objects.get(pk=self.kwargs['game_pk'])
         participant = serializer.save(game=game)
-        tasks.create_stats(participant.player_ref, game.competition)
+        if game.complete:
+            for participant in game.participants.all():
+                for comp in game.competitions.all():
+                    tasks.create_stats(participant.player_ref, comp.competition.id)
 
     def perform_update(self, serializer):
         serializer.save()
         participant = self.get_object()
         game = models.Game.objects.get(pk=self.kwargs['game_pk'])
-        tasks.create_stats(participant.player_ref, game.competition)
+        if game.complete:
+            for participant in game.participants.all():
+                for comp in game.competitions.all():
+                    tasks.create_stats(participant.player_ref, comp.competition.id)
         
 
 class TableViewSet(viewsets.ModelViewSet):
